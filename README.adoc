@@ -1,0 +1,6 @@
+Recommended setup:
+
+Clone the repo
+Run "python3 src/simple_script.py"
+Follow the setup steps
+
