@@ -4,3 +4,18 @@ Clone the repo
 Run "python3 src/simple_script.py"
 Follow the setup steps
 
+Changing settings:
+
+Simply quit the script, edit settings.txt, and restart it.
+If you'd like to redo the setup, you can delete settings.txt.
+
+Troubleshooting:
+
+Run "python3 src/simple_script.py --help".
+Ensure you have spotipy pip install'd.
+
+Settings units:
+
+Volumes are from 0 to 100
+Ramp Time is in minutes
+End Time is HH:MM in your local timezone. For example, 07:00 if you want it to end at 7am.
