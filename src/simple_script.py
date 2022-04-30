@@ -75,6 +75,12 @@ def setup_install():
     
     pass
 
+def run_demo():
+    spotify = init_client('sharpieman20')
+    spotify.volume(25)
+    print('hello world')
+    pass
+
 
 def load_settings():
     settings_file = Path.cwd() / 'settings.txt'
@@ -83,25 +89,23 @@ def load_settings():
     return setup_install()
 
 def main(args):
+    if 'demo_mode' in args:
+        run_demo()
+        return
+
     settings = load_settings()
-    settings.save_to_file(Path.cwd() / 'settings.txt')
 
-    spotify = init_client(args.username)
+    spotify = init_client(settings)
 
-    curve = VolumeCurve(args)
+    curve = VolumeCurve(settings)
 
     volume_loop(curve)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    # if no args are passed
-    # check if there is a config saved
-    # if not, prompt for setup
-    # if there is, run with that config
-
-    parser.add_argument('--username', type=str, help='time in minutes between updates')
     parser.add_argument('--read-volume-mode', type=str, help='just reads the user\'s current spotify volume and exits. useful so you know your volume to change settings.')
+    parser.add_argument('--demo-mode', nargs='?', default=argparse.SUPPRESS, help='run in demo mode.')
 
     args = parser.parse_args()
 
